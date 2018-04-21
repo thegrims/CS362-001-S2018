@@ -23,10 +23,10 @@ import org.w3c.dom.*;
 public class DataHandler {
 
     /** Default file name **/
-<span class="nc" id="L26">    private static String DEFAULT_FILE_NAME = &quot;calendar.xml&quot;;</span>
+<span class="fc" id="L26">    private static String DEFAULT_FILE_NAME = &quot;calendar.xml&quot;;</span>
 
     /** Default auto-save setting after each change to an appointment **/
-<span class="nc" id="L29">    private static boolean DEFAULT_AUTO_SAVE = true;</span>
+<span class="fc" id="L29">    private static boolean DEFAULT_AUTO_SAVE = true;</span>
 
     /** Very top of the XML document **/
     private Document document;
@@ -47,75 +47,75 @@ public class DataHandler {
     public DataHandler() throws IOException {
         //Call the other constructor using the default file name.
         //The default file is stored in the user's home directory.
-<span class="nc" id="L50">        this(System.getProperty(&quot;user.dir&quot;) +</span>
-<span class="nc" id="L51">        System.getProperty(&quot;file.separator&quot;) + DEFAULT_FILE_NAME);</span>
-<span class="nc" id="L52">    }</span>
+<span class="fc" id="L50">        this(System.getProperty(&quot;user.dir&quot;) +</span>
+<span class="fc" id="L51">        System.getProperty(&quot;file.separator&quot;) + DEFAULT_FILE_NAME);</span>
+<span class="fc" id="L52">    }</span>
 
     /**
      * Creates a new data handler with the specified filename.
      * Uses the default auto-save setting.
      **/
     public DataHandler(String fileName) throws IOException {
-<span class="nc" id="L59">        this(fileName, DEFAULT_AUTO_SAVE);</span>
-<span class="nc" id="L60">    }</span>
+<span class="fc" id="L59">        this(fileName, DEFAULT_AUTO_SAVE);</span>
+<span class="fc" id="L60">    }</span>
 
     /**
      * Creates a new data handler with the specified filename and auto-save
      * setting
      **/
-<span class="nc" id="L66">    public DataHandler(String fileName, boolean autoSave) throws IOException {</span>
+<span class="fc" id="L66">    public DataHandler(String fileName, boolean autoSave) throws IOException {</span>
         //Record the line separator for later use
-<span class="nc" id="L68">        String separator = System.getProperty(&quot;line.separator&quot;);</span>
+<span class="fc" id="L68">        String separator = System.getProperty(&quot;line.separator&quot;);</span>
 
         //The data handler isn't valid unless everything is set up correctly
-<span class="nc" id="L71">        valid = false;</span>
+<span class="fc" id="L71">        valid = false;</span>
 
         //Record the auto-save setting and file name
-<span class="nc" id="L74">        this.autoSave = autoSave;</span>
-<span class="nc" id="L75">        setFileName(fileName);</span>
+<span class="fc" id="L74">        this.autoSave = autoSave;</span>
+<span class="fc" id="L75">        setFileName(fileName);</span>
 
         //Read the XML file...
         //Step 1. Set up document builder factory and its settings
-<span class="nc" id="L79">        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</span>
-<span class="nc" id="L80">        dbf.setValidating(false);</span>
-<span class="nc" id="L81">        dbf.setIgnoringComments(false);</span>
-<span class="nc" id="L82">        dbf.setIgnoringElementContentWhitespace(false);</span>
-<span class="nc" id="L83">        dbf.setCoalescing(false);</span>
-<span class="nc" id="L84">        dbf.setExpandEntityReferences(true);</span>
+<span class="fc" id="L79">        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</span>
+<span class="fc" id="L80">        dbf.setValidating(false);</span>
+<span class="fc" id="L81">        dbf.setIgnoringComments(false);</span>
+<span class="fc" id="L82">        dbf.setIgnoringElementContentWhitespace(false);</span>
+<span class="fc" id="L83">        dbf.setCoalescing(false);</span>
+<span class="fc" id="L84">        dbf.setExpandEntityReferences(true);</span>
 
         //Step 2. Create a document builder from the factory
-<span class="nc" id="L87">        DocumentBuilder db = null;</span>
+<span class="fc" id="L87">        DocumentBuilder db = null;</span>
         try {
-<span class="nc" id="L89">            db = dbf.newDocumentBuilder();</span>
+<span class="fc" id="L89">            db = dbf.newDocumentBuilder();</span>
         }
 <span class="nc" id="L91">        catch (ParserConfigurationException pce) {</span>
 <span class="nc" id="L92">            throw new IOException(&quot;Invalid parser configuration.&quot; + separator +</span>
 <span class="nc" id="L93">            pce.getMessage());</span>
-<span class="nc" id="L94">        }</span>
-<span class="nc" id="L95">        db.setErrorHandler(new XmlParserErrorHandler());</span>
+<span class="fc" id="L94">        }</span>
+<span class="fc" id="L95">        db.setErrorHandler(new XmlParserErrorHandler());</span>
 
         //Step 3. Parse the file now (or a default string if it doesn't exist)
-<span class="nc" id="L98">        Document doc = null;</span>
+<span class="fc" id="L98">        Document doc = null;</span>
         try {
-<span class="nc" id="L100">            File file = new File(fileName);</span>
-<span class="nc bnc" id="L101" title="All 2 branches missed.">            if (file.isFile()) {</span>
-<span class="nc" id="L102">                doc = db.parse(file);</span>
+<span class="fc" id="L100">            File file = new File(fileName);</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            if (file.isFile()) {</span>
+<span class="fc" id="L102">                doc = db.parse(file);</span>
             }
             else {
-<span class="nc" id="L105">                String newFile = &quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;&lt;calendar/&gt;&quot;;</span>
-<span class="nc" id="L106">                InputSource is = new InputSource(new StringReader(newFile));</span>
-<span class="nc" id="L107">                doc = db.parse(is);</span>
+<span class="fc" id="L105">                String newFile = &quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;&lt;calendar/&gt;&quot;;</span>
+<span class="fc" id="L106">                InputSource is = new InputSource(new StringReader(newFile));</span>
+<span class="fc" id="L107">                doc = db.parse(is);</span>
             }
         }
 <span class="nc" id="L110">        catch (SAXException se) {</span>
 <span class="nc" id="L111">            throw new IOException(&quot;Unable to read document.&quot; + separator +</span>
 <span class="nc" id="L112">            se.getMessage());</span>
-<span class="nc" id="L113">        }</span>
+<span class="fc" id="L113">        }</span>
 
         //Set the document node now
-<span class="nc" id="L116">        setDocument(doc);</span>
-<span class="nc" id="L117">        valid = true;</span>
-<span class="nc" id="L118">    }</span>
+<span class="fc" id="L116">        setDocument(doc);</span>
+<span class="fc" id="L117">        valid = true;</span>
+<span class="fc" id="L118">    }</span>
 
     /**
      * Retrieves a range of appointments between two dates.
@@ -129,46 +129,46 @@ public class DataHandler {
             GregorianCalendar lastDay) throws DateOutOfRangeException {
 
             //Internal Diagnositic Messages turned on when true
-<span class="nc" id="L132">            boolean diagnose = false;</span>
+<span class="fc" id="L132">            boolean diagnose = false;</span>
 
             //If the data handler isn't initialized return null
-<span class="nc bnc" id="L135" title="All 2 branches missed.">            if (isValid() == false) {</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">            if (isValid() == false) {</span>
 <span class="nc" id="L136">                return null;</span>
             }
 
             //Make sure that the first day is before the last day
-<span class="nc bnc" id="L140" title="All 2 branches missed.">            if (!firstDay.before(lastDay)) {</span>
-<span class="nc" id="L141">                throw new DateOutOfRangeException(&quot;Second date specified is not &quot; +</span>
+<span class="fc bfc" id="L140" title="All 2 branches covered.">            if (!firstDay.before(lastDay)) {</span>
+<span class="fc" id="L141">                throw new DateOutOfRangeException(&quot;Second date specified is not &quot; +</span>
                     &quot;before the first date specified.&quot;);
             }
 
             //Create a linked list of calendar days to return
-<span class="nc" id="L146">            LinkedList&lt;CalDay&gt; calDays = new LinkedList&lt;CalDay&gt;();</span>
+<span class="fc" id="L146">            LinkedList&lt;CalDay&gt; calDays = new LinkedList&lt;CalDay&gt;();</span>
 
             //Create the first CalDay object with the starting date and add to list
-<span class="nc" id="L149">            GregorianCalendar nextDay = (GregorianCalendar) firstDay.clone();</span>
-<span class="nc bnc" id="L150" title="All 2 branches missed.">            while (nextDay.before(lastDay)) {</span>
-<span class="nc" id="L151">                calDays.add(new CalDay(nextDay));</span>
-<span class="nc" id="L152">                nextDay.add(nextDay.DAY_OF_MONTH, 1);</span>
+<span class="fc" id="L149">            GregorianCalendar nextDay = (GregorianCalendar) firstDay.clone();</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">            while (nextDay.before(lastDay)) {</span>
+<span class="fc" id="L151">                calDays.add(new CalDay(nextDay));</span>
+<span class="fc" id="L152">                nextDay.add(nextDay.DAY_OF_MONTH, 1);</span>
             }
 
-<span class="nc bnc" id="L155" title="All 2 branches missed.">            if (diagnose) {</span>
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">            if (diagnose) {</span>
 <span class="nc" id="L156">                System.out.println(&quot;=======================================&quot;);</span>
 <span class="nc" id="L157">                System.out.println(&quot;DEBUGGING GETTING OF APPOINTMENTS      &quot;);</span>
             }
 
             //Retrieve the root node - &lt;calendar&gt;
-<span class="nc" id="L161">            Document doc = getDocument();</span>
-<span class="nc" id="L162">            Element root = doc.getDocumentElement();</span>
+<span class="fc" id="L161">            Document doc = getDocument();</span>
+<span class="fc" id="L162">            Element root = doc.getDocumentElement();</span>
 
-<span class="nc bnc" id="L164" title="All 2 branches missed.">            if (diagnose) {</span>
+<span class="pc bpc" id="L164" title="1 of 2 branches missed.">            if (diagnose) {</span>
 <span class="nc" id="L165">                System.out.println(&quot;Root node: &quot; + root.getTagName());</span>
 <span class="nc" id="L166">                System.out.println(&quot;All following nodes should be appt nodes.&quot;);</span>
             }
 
             //Retrieve the root's children - &lt;appt&gt; nodes
-<span class="nc" id="L170">            NodeList appts = root.getChildNodes();</span>
-<span class="nc bnc" id="L171" title="All 2 branches missed.">            for (int i = 0; i &lt; appts.getLength(); i++) {</span>
+<span class="fc" id="L170">            NodeList appts = root.getChildNodes();</span>
+<span class="pc bpc" id="L171" title="1 of 2 branches missed.">            for (int i = 0; i &lt; appts.getLength(); i++) {</span>
 <span class="nc" id="L172">                Element currentAppt = (Element) appts.item(i);</span>
 
 <span class="nc bnc" id="L174" title="All 2 branches missed.">                if (diagnose) {</span>
@@ -266,7 +266,7 @@ public class DataHandler {
 <span class="nc" id="L266">                    System.out.println(&quot;This appointment is done.&quot;);</span>
                 }
             } //for nodelist
-<span class="nc" id="L269">            return calDays;</span>
+<span class="fc" id="L269">            return calDays;</span>
         }
 
 
@@ -535,13 +535,13 @@ public class DataHandler {
         try {
             //Create a transformer. The transformer is not really transforming
             //much, it is just outputting XML
-<span class="nc" id="L538">            TransformerFactory tFactory = TransformerFactory.newInstance();</span>
-<span class="nc" id="L539">            Transformer transformer = tFactory.newTransformer();</span>
+<span class="fc" id="L538">            TransformerFactory tFactory = TransformerFactory.newInstance();</span>
+<span class="fc" id="L539">            Transformer transformer = tFactory.newTransformer();</span>
 
-<span class="nc" id="L541">            DOMSource source = new DOMSource(getDocument());</span>
-<span class="nc" id="L542">            File outputFile = new File(getFileName());</span>
-<span class="nc" id="L543">            StreamResult result = new StreamResult(outputFile);</span>
-<span class="nc" id="L544">            transformer.transform(source, result);</span>
+<span class="fc" id="L541">            DOMSource source = new DOMSource(getDocument());</span>
+<span class="fc" id="L542">            File outputFile = new File(getFileName());</span>
+<span class="fc" id="L543">            StreamResult result = new StreamResult(outputFile);</span>
+<span class="fc" id="L544">            transformer.transform(source, result);</span>
         }
         //These exceptions should never be thrown because the structure of
         //the XML document is preset and they are simple, any problems
@@ -551,9 +551,9 @@ public class DataHandler {
         }
 <span class="nc" id="L552">        catch (TransformerException te) {</span>
 <span class="nc" id="L553">            return false;</span>
-<span class="nc" id="L554">        }</span>
+<span class="fc" id="L554">        }</span>
 
-<span class="nc" id="L556">        return true;</span>
+<span class="fc" id="L556">        return true;</span>
     }
 
     /**
@@ -567,27 +567,27 @@ public class DataHandler {
      * @return True if the dataHandler is initialized correctly
      **/
     private boolean isValid() {
-<span class="nc" id="L570">        return valid;</span>
+<span class="fc" id="L570">        return valid;</span>
     }
 
     /** Sets parent **/
     private void setDocument(Document document) {
-<span class="nc" id="L575">        this.document = document;</span>
-<span class="nc" id="L576">    }</span>
+<span class="fc" id="L575">        this.document = document;</span>
+<span class="fc" id="L576">    }</span>
 
     /** Sets fileName **/
     private void setFileName(String fileName) {
-<span class="nc" id="L580">        this.fileName = fileName;</span>
-<span class="nc" id="L581">    }</span>
+<span class="fc" id="L580">        this.fileName = fileName;</span>
+<span class="fc" id="L581">    }</span>
 
     /** Gets parent **/
     private Document getDocument() {
-<span class="nc" id="L585">        return document;</span>
+<span class="fc" id="L585">        return document;</span>
     }
 
     /** Gets filename **/
     private String getFileName() {
-<span class="nc" id="L590">        return fileName;</span>
+<span class="fc" id="L590">        return fileName;</span>
     }
 
 

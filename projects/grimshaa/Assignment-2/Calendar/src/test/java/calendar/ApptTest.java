@@ -20,6 +20,7 @@ public class ApptTest {
 			assertEquals(test.getDescription(),"testDescription");
 			assertEquals(test.getEmailAddress(),"test@gmail.com");
 			// test.setValid();
+			// 
 			// assertEquals(test.getValid(),true);
 	 }
 
