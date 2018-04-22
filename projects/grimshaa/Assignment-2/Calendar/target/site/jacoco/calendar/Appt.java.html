@@ -303,8 +303,8 @@ public class Appt{
 <span class="fc" id="L303">        setRecurNumber(recurNumber);</span>
 <span class="fc" id="L304">    }</span>
     private void setRecurDays(int[] recurDays) {
-<span class="pc bpc" id="L306" title="1 of 2 branches missed.">        if (recurDays == null) {</span>
-<span class="nc" id="L307">            this.recurDays = new int[0];</span>
+<span class="fc bfc" id="L306" title="All 2 branches covered.">        if (recurDays == null) {</span>
+<span class="fc" id="L307">            this.recurDays = new int[0];</span>
         }
         else {
 <span class="fc" id="L310">            this.recurDays = recurDays;</span>
@@ -326,15 +326,15 @@ public class Appt{
 
     /** Gets recurNumber */
     public int getRecurNumber() {
-<span class="nc" id="L329">        return recurNumber;</span>
+<span class="fc" id="L329">        return recurNumber;</span>
     }
     /** Gets recurBy */
     public int getRecurBy() {
-<span class="nc" id="L333">        return recurBy;</span>
+<span class="fc" id="L333">        return recurBy;</span>
     }
     /** Gets recurDays */
     public int[] getRecurDays() {
-<span class="nc" id="L337">        return recurDays;</span>
+<span class="fc" id="L337">        return recurDays;</span>
     }
     /**
      * Checks to see if an appointment recurrs or not
@@ -345,7 +345,7 @@ public class Appt{
     }
     /** Gets recurIncrement */
     public int getRecurIncrement() {
-<span class="nc" id="L348">        return recurIncrement;</span>
+<span class="fc" id="L348">        return recurIncrement;</span>
     }
     // ----------------------------------------------------------
     /**
