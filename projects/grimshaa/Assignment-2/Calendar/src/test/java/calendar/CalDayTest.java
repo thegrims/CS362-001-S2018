@@ -32,6 +32,7 @@ public class CalDayTest {
       GregorianCalendar time1 = new GregorianCalendar(pdt);
 
       CalDay test = new CalDay(time1);
+      
       assertEquals(test.isValid(),true);
 
       Appt myAppt = new Appt(2,2,2,2,2010,"test","testDescription","test@gmail.com");

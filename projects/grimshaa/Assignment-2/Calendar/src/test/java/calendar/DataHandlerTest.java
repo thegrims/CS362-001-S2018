@@ -33,23 +33,38 @@ public class DataHandlerTest {
       //
       // GregorianCalendar time1 = new GregorianCalendar(pdt);
       // GregorianCalendar time2 = new GregorianCalendar(pdt);
-      GregorianCalendar time1 = new GregorianCalendar();
-      GregorianCalendar time2 = new GregorianCalendar();
-      SimpleDateFormat format1 = new SimpleDateFormat("1999-1-1");
-      SimpleDateFormat format2 = new SimpleDateFormat("2018-2-1");
-      format1.setCalendar(time1);
-      format2.setCalendar(time2);
-      test.getApptRange(time1,time2);
-      String result = format1.format(time1.getTime());
-      System.out.println(result);
+      GregorianCalendar time1 = new GregorianCalendar(1999,1,1);
+      GregorianCalendar time2 = new GregorianCalendar(2018,2,2);
+      // SimpleDateFormat format1 = new SimpleDateFormat("1999-1-1");
+      // SimpleDateFormat format2 = new SimpleDateFormat("2018-2-1");
+      // format1.setCalendar(time1);
+      // format2.setCalendar(time2);
 
-      result = format2.format(time2.getTime());
-      System.out.println(result);
+      // String result = format1.format(time1.getTime());
+      // System.out.println(time1);
+      // assertTrue(!time2.before(time1));
+
+      // result = format2.format(time2.getTime());
+      // System.out.println(result);
 
       assertEquals(test.save(),true);
       Appt myAppt = new Appt(2,2,2,2,2010,"test","testDescription","test@gmail.com");
-      int[] recurrDays = {8,9};
-      myAppt.setRecurrence(recurrDays, 5, 5, 5);
+      int[] recurDaysArr4={2,3,4};
+      myAppt.setRecurrence( recurDaysArr4, Appt.RECUR_BY_WEEKLY, 3, Appt.RECUR_NUMBER_FOREVER);
+      System.out.println(myAppt.getRecurBy());
+
+      myAppt.setRecurrence( recurDaysArr4, Appt.RECUR_BY_MONTHLY, 3, Appt.RECUR_NUMBER_FOREVER);
+      System.out.println(myAppt.getRecurBy());
+
+      myAppt.setRecurrence( recurDaysArr4, Appt.RECUR_BY_YEARLY, 3, Appt.RECUR_NUMBER_FOREVER);
+      System.out.println(myAppt.getRecurBy());
+
+      assertEquals(test.deleteAppt(myAppt),false);
+
       assertEquals(test.saveAppt(myAppt),true);
+
+      test.getApptRange(time1,time2);
+
+      assertEquals(test.deleteAppt(myAppt),true);
     }
 }

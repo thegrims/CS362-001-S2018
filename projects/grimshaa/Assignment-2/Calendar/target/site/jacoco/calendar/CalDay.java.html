@@ -74,11 +74,11 @@ public class CalDay {
 	 * appointments can be added. The appointment can also be added twice.
 	 */
 	public void addAppt(Appt appt) {
-<span class="fc bfc" id="L77" title="All 2 branches covered.">		if (appt.getValid()) {</span>
-<span class="pc bpc" id="L78" title="1 of 2 branches missed.">			for (int i = 0; i &lt; getAppts().size(); i++) {</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">		if (appt.getValid()) {</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">			for (int i = 0; i &lt; getAppts().size(); i++) {</span>
 				//Put the appointment in the correct order - finish this
-<span class="nc" id="L80">				if (((Appt)getAppts().get(i)).getStartHour() &gt;</span>
-<span class="nc bnc" id="L81" title="All 2 branches missed.">										appt.getStartHour()) {</span>
+<span class="fc" id="L80">				if (((Appt)getAppts().get(i)).getStartHour() &gt;</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">										appt.getStartHour()) {</span>
 
 <span class="nc" id="L83">					getAppts().add(i, appt);</span>
 <span class="nc" id="L84">					return;</span>

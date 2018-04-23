@@ -98,13 +98,13 @@ public class DataHandler {
 <span class="fc" id="L98">        Document doc = null;</span>
         try {
 <span class="fc" id="L100">            File file = new File(fileName);</span>
-<span class="fc bfc" id="L101" title="All 2 branches covered.">            if (file.isFile()) {</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">            if (file.isFile()) {</span>
 <span class="fc" id="L102">                doc = db.parse(file);</span>
             }
             else {
-<span class="fc" id="L105">                String newFile = &quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;&lt;calendar/&gt;&quot;;</span>
-<span class="fc" id="L106">                InputSource is = new InputSource(new StringReader(newFile));</span>
-<span class="fc" id="L107">                doc = db.parse(is);</span>
+<span class="nc" id="L105">                String newFile = &quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;&lt;calendar/&gt;&quot;;</span>
+<span class="nc" id="L106">                InputSource is = new InputSource(new StringReader(newFile));</span>
+<span class="nc" id="L107">                doc = db.parse(is);</span>
             }
         }
 <span class="nc" id="L110">        catch (SAXException se) {</span>
@@ -137,8 +137,8 @@ public class DataHandler {
             }
 
             //Make sure that the first day is before the last day
-<span class="fc bfc" id="L140" title="All 2 branches covered.">            if (!firstDay.before(lastDay)) {</span>
-<span class="fc" id="L141">                throw new DateOutOfRangeException(&quot;Second date specified is not &quot; +</span>
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">            if (!firstDay.before(lastDay)) {</span>
+<span class="nc" id="L141">                throw new DateOutOfRangeException(&quot;Second date specified is not &quot; +</span>
                     &quot;before the first date specified.&quot;);
             }
 
@@ -168,101 +168,101 @@ public class DataHandler {
 
             //Retrieve the root's children - &lt;appt&gt; nodes
 <span class="fc" id="L170">            NodeList appts = root.getChildNodes();</span>
-<span class="pc bpc" id="L171" title="1 of 2 branches missed.">            for (int i = 0; i &lt; appts.getLength(); i++) {</span>
-<span class="nc" id="L172">                Element currentAppt = (Element) appts.item(i);</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">            for (int i = 0; i &lt; appts.getLength(); i++) {</span>
+<span class="fc" id="L172">                Element currentAppt = (Element) appts.item(i);</span>
 
-<span class="nc bnc" id="L174" title="All 2 branches missed.">                if (diagnose) {</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">                if (diagnose) {</span>
 <span class="nc" id="L175">                    System.out.println(&quot;Nodes under the root: &quot; +</span>
 <span class="nc" id="L176">                        currentAppt.getTagName());</span>
                 }
 
                 //For this appointment, get the values of all fields
-<span class="nc" id="L180">                NodeList fieldNodes = currentAppt.getChildNodes();</span>
-<span class="nc" id="L181">                Hashtable&lt;String, String&gt; fields = new Hashtable&lt;String, String&gt;();</span>
-<span class="nc bnc" id="L182" title="All 2 branches missed.">                if (diagnose) {</span>
+<span class="fc" id="L180">                NodeList fieldNodes = currentAppt.getChildNodes();</span>
+<span class="fc" id="L181">                Hashtable&lt;String, String&gt; fields = new Hashtable&lt;String, String&gt;();</span>
+<span class="pc bpc" id="L182" title="1 of 2 branches missed.">                if (diagnose) {</span>
 <span class="nc" id="L183">                    System.out.println(&quot;Preparing to read each field for the appt&quot;);</span>
                 }
-<span class="nc bnc" id="L185" title="All 2 branches missed.">                for (int j = 0; j &lt; fieldNodes.getLength(); j++) {</span>
-<span class="nc" id="L186">                    Element currentField = (Element) fieldNodes.item(j);</span>
-<span class="nc" id="L187">                    String fieldName = currentField.getTagName();</span>
-<span class="nc bnc" id="L188" title="All 2 branches missed.">                    if (diagnose) {</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">                for (int j = 0; j &lt; fieldNodes.getLength(); j++) {</span>
+<span class="fc" id="L186">                    Element currentField = (Element) fieldNodes.item(j);</span>
+<span class="fc" id="L187">                    String fieldName = currentField.getTagName();</span>
+<span class="pc bpc" id="L188" title="1 of 2 branches missed.">                    if (diagnose) {</span>
 <span class="nc" id="L189">                        System.out.println(&quot;Reading field: &quot; + fieldName);</span>
                     }
-<span class="nc" id="L191">                    String fieldValue = &quot;&quot;;</span>
-<span class="nc" id="L192">                    NodeList fieldValueNodes = currentField.getChildNodes();</span>
-<span class="nc bnc" id="L193" title="All 2 branches missed.">                    for (int k = 0; k &lt; fieldValueNodes.getLength(); k++) {</span>
-<span class="nc" id="L194">                        Text text = (Text)fieldValueNodes.item(k);</span>
-<span class="nc" id="L195">                        fieldValue += text.getData();</span>
+<span class="fc" id="L191">                    String fieldValue = &quot;&quot;;</span>
+<span class="fc" id="L192">                    NodeList fieldValueNodes = currentField.getChildNodes();</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">                    for (int k = 0; k &lt; fieldValueNodes.getLength(); k++) {</span>
+<span class="fc" id="L194">                        Text text = (Text)fieldValueNodes.item(k);</span>
+<span class="fc" id="L195">                        fieldValue += text.getData();</span>
                     }
-<span class="nc bnc" id="L197" title="All 2 branches missed.">                    if (diagnose) {</span>
+<span class="pc bpc" id="L197" title="1 of 2 branches missed.">                    if (diagnose) {</span>
 <span class="nc" id="L198">                        System.out.println(&quot;Reading field's value: &quot; + fieldValue);</span>
                     }
 
-<span class="nc" id="L201">                    fields.put(fieldName, fieldValue);</span>
+<span class="fc" id="L201">                    fields.put(fieldName, fieldValue);</span>
                 }
 
                 //Construct a new Appointment object with the data found
-<span class="nc" id="L205">                Appt appt = new Appt(</span>
-<span class="nc" id="L206">                            Integer.parseInt((String)fields.get(&quot;startHour&quot;)),</span>
-<span class="nc" id="L207">                            Integer.parseInt((String)fields.get(&quot;startMinute&quot;)),</span>
-<span class="nc" id="L208">                            Integer.parseInt((String)fields.get(&quot;startDay&quot;)),</span>
-<span class="nc" id="L209">                            Integer.parseInt((String)fields.get(&quot;startMonth&quot;)),</span>
-<span class="nc" id="L210">                            Integer.parseInt((String)fields.get(&quot;startYear&quot;)),</span>
-<span class="nc" id="L211">                            (String)fields.get(&quot;title&quot;),</span>
-<span class="nc" id="L212">                            (String)fields.get(&quot;description&quot;),</span>
-<span class="nc" id="L213">                            (String)fields.get(&quot;location&quot;));</span>
-<span class="nc" id="L214">                LinkedList&lt;String&gt; recurDaysList = new LinkedList&lt;String&gt;();</span>
-<span class="nc" id="L215">                StringTokenizer stk =</span>
-<span class="nc" id="L216">                    new StringTokenizer((String)fields.get(&quot;recurDays&quot;));</span>
-<span class="nc bnc" id="L217" title="All 2 branches missed.">                while (stk.hasMoreTokens()) {</span>
-<span class="nc" id="L218">                    recurDaysList.add(stk.nextToken(&quot;,&quot;));</span>
+<span class="fc" id="L205">                Appt appt = new Appt(</span>
+<span class="fc" id="L206">                            Integer.parseInt((String)fields.get(&quot;startHour&quot;)),</span>
+<span class="fc" id="L207">                            Integer.parseInt((String)fields.get(&quot;startMinute&quot;)),</span>
+<span class="fc" id="L208">                            Integer.parseInt((String)fields.get(&quot;startDay&quot;)),</span>
+<span class="fc" id="L209">                            Integer.parseInt((String)fields.get(&quot;startMonth&quot;)),</span>
+<span class="fc" id="L210">                            Integer.parseInt((String)fields.get(&quot;startYear&quot;)),</span>
+<span class="fc" id="L211">                            (String)fields.get(&quot;title&quot;),</span>
+<span class="fc" id="L212">                            (String)fields.get(&quot;description&quot;),</span>
+<span class="fc" id="L213">                            (String)fields.get(&quot;location&quot;));</span>
+<span class="fc" id="L214">                LinkedList&lt;String&gt; recurDaysList = new LinkedList&lt;String&gt;();</span>
+<span class="fc" id="L215">                StringTokenizer stk =</span>
+<span class="fc" id="L216">                    new StringTokenizer((String)fields.get(&quot;recurDays&quot;));</span>
+<span class="fc bfc" id="L217" title="All 2 branches covered.">                while (stk.hasMoreTokens()) {</span>
+<span class="fc" id="L218">                    recurDaysList.add(stk.nextToken(&quot;,&quot;));</span>
                 }
-<span class="nc" id="L220">                int[] recurDaysArr = new int[recurDaysList.size()];</span>
-<span class="nc bnc" id="L221" title="All 2 branches missed.">                for (int j = 0; j &lt; recurDaysList.size(); j++) {</span>
-<span class="nc" id="L222">                    recurDaysArr[j] = Integer.parseInt((String)recurDaysList.get(j));</span>
+<span class="fc" id="L220">                int[] recurDaysArr = new int[recurDaysList.size()];</span>
+<span class="fc bfc" id="L221" title="All 2 branches covered.">                for (int j = 0; j &lt; recurDaysList.size(); j++) {</span>
+<span class="fc" id="L222">                    recurDaysArr[j] = Integer.parseInt((String)recurDaysList.get(j));</span>
                 }
-<span class="nc" id="L224">                appt.setRecurrence(recurDaysArr,</span>
-<span class="nc" id="L225">                            Integer.parseInt((String)fields.get(&quot;recurBy&quot;)),</span>
-<span class="nc" id="L226">                            Integer.parseInt((String)fields.get(&quot;recurIncrement&quot;)),</span>
-<span class="nc" id="L227">                            Integer.parseInt((String)fields.get(&quot;recurNumber&quot;)));</span>
+<span class="fc" id="L224">                appt.setRecurrence(recurDaysArr,</span>
+<span class="fc" id="L225">                            Integer.parseInt((String)fields.get(&quot;recurBy&quot;)),</span>
+<span class="fc" id="L226">                            Integer.parseInt((String)fields.get(&quot;recurIncrement&quot;)),</span>
+<span class="fc" id="L227">                            Integer.parseInt((String)fields.get(&quot;recurNumber&quot;)));</span>
                 //**When changing these later, remember to check for NULL ***/
 
-<span class="nc bnc" id="L230" title="All 2 branches missed.">                if (diagnose) {</span>
+<span class="pc bpc" id="L230" title="1 of 2 branches missed.">                if (diagnose) {</span>
 <span class="nc" id="L231">                    System.out.println(&quot;Calculating appointment occurrences.&quot;);</span>
                 }
                 //Figure out which days the appointment occurs on
-<span class="nc" id="L234">                LinkedList&lt;GregorianCalendar&gt;  apptOccursOnDays =</span>
-<span class="nc" id="L235">                    getApptOccurences(appt, firstDay, lastDay);</span>
+<span class="fc" id="L234">                LinkedList&lt;GregorianCalendar&gt;  apptOccursOnDays =</span>
+<span class="fc" id="L235">                    getApptOccurences(appt, firstDay, lastDay);</span>
 
-<span class="nc bnc" id="L237" title="All 2 branches missed.">                if (diagnose) {</span>
+<span class="pc bpc" id="L237" title="1 of 2 branches missed.">                if (diagnose) {</span>
 <span class="nc" id="L238">                    System.out.println(&quot;This appointment occurs on: &quot;);</span>
                 }
 
                 //For each day in the list, calculate the difference between the
                 //first day and the day of occurrence and add the appointment to
                 //the correct CalDay
-<span class="nc" id="L244">                int daysDifference = 0;</span>
-<span class="nc" id="L245">                nextDay = (GregorianCalendar)firstDay.clone();</span>
-<span class="nc" id="L246">                Iterator itr = apptOccursOnDays.iterator();</span>
-<span class="nc bnc" id="L247" title="All 2 branches missed.">                while (itr.hasNext()) {</span>
-<span class="nc" id="L248">                    GregorianCalendar apptOccursOn = (GregorianCalendar)itr.next();</span>
+<span class="fc" id="L244">                int daysDifference = 0;</span>
+<span class="fc" id="L245">                nextDay = (GregorianCalendar)firstDay.clone();</span>
+<span class="fc" id="L246">                Iterator itr = apptOccursOnDays.iterator();</span>
+<span class="fc bfc" id="L247" title="All 2 branches covered.">                while (itr.hasNext()) {</span>
+<span class="fc" id="L248">                    GregorianCalendar apptOccursOn = (GregorianCalendar)itr.next();</span>
 
-<span class="nc bnc" id="L250" title="All 2 branches missed.">                    if (diagnose) {</span>
+<span class="pc bpc" id="L250" title="1 of 2 branches missed.">                    if (diagnose) {</span>
 <span class="nc" id="L251">                        System.out.println(&quot;\t&quot; + apptOccursOn);</span>
                     }
 
-<span class="nc bnc" id="L254" title="All 2 branches missed.">                    while(nextDay.before(apptOccursOn)) {</span>
-<span class="nc" id="L255">                        daysDifference++;</span>
-<span class="nc" id="L256">                        nextDay.add(nextDay.DAY_OF_MONTH, 1);</span>
+<span class="fc bfc" id="L254" title="All 2 branches covered.">                    while(nextDay.before(apptOccursOn)) {</span>
+<span class="fc" id="L255">                        daysDifference++;</span>
+<span class="fc" id="L256">                        nextDay.add(nextDay.DAY_OF_MONTH, 1);</span>
                     }
 
-<span class="nc" id="L259">                    CalDay calDayOfAppt = (CalDay)calDays.get(daysDifference);</span>
-<span class="nc" id="L260">                    calDayOfAppt.addAppt(appt);</span>
+<span class="fc" id="L259">                    CalDay calDayOfAppt = (CalDay)calDays.get(daysDifference);</span>
+<span class="fc" id="L260">                    calDayOfAppt.addAppt(appt);</span>
 
-<span class="nc" id="L262">                }</span>
+<span class="fc" id="L262">                }</span>
 
                 //This appointment has been added to all CalDays
-<span class="nc bnc" id="L265" title="All 2 branches missed.">                if (diagnose) {</span>
+<span class="pc bpc" id="L265" title="1 of 2 branches missed.">                if (diagnose) {</span>
 <span class="nc" id="L266">                    System.out.println(&quot;This appointment is done.&quot;);</span>
                 }
             } //for nodelist
@@ -279,45 +279,45 @@ public class DataHandler {
     private static LinkedList&lt;GregorianCalendar&gt; getApptOccurences(Appt appt,
         GregorianCalendar firstDay, GregorianCalendar lastDay) {
 
-<span class="nc" id="L282">        LinkedList&lt;GregorianCalendar&gt; result = new LinkedList&lt;GregorianCalendar&gt;();</span>
+<span class="fc" id="L282">        LinkedList&lt;GregorianCalendar&gt; result = new LinkedList&lt;GregorianCalendar&gt;();</span>
 
         //Make sure that the firstDay is before the last day
-<span class="nc bnc" id="L285" title="All 2 branches missed.">        if (!firstDay.before(lastDay)) {</span>
+<span class="pc bpc" id="L285" title="1 of 2 branches missed.">        if (!firstDay.before(lastDay)) {</span>
 <span class="nc" id="L286">            return result;</span>
         }
 
         //Get the first recurrence taken care of
-<span class="nc" id="L290">        GregorianCalendar occurrenceDay =</span>
-<span class="nc" id="L291">                new GregorianCalendar(appt.getStartYear(), appt.getStartMonth()-1,</span>
-<span class="nc" id="L292">                    appt.getStartDay());</span>
+<span class="fc" id="L290">        GregorianCalendar occurrenceDay =</span>
+<span class="fc" id="L291">                new GregorianCalendar(appt.getStartYear(), appt.getStartMonth()-1,</span>
+<span class="fc" id="L292">                    appt.getStartDay());</span>
 
         //If the first occurrence is after the last day, then it doesn't matter
         //when it recurs because those dates must be after the last day too
-<span class="nc bnc" id="L296" title="All 2 branches missed.">        if (!occurrenceDay.before(lastDay)) {</span>
+<span class="pc bpc" id="L296" title="1 of 2 branches missed.">        if (!occurrenceDay.before(lastDay)) {</span>
 <span class="nc" id="L297">            return result;</span>
         }
 
         //Make sure that there is a limited number of recurrences
-<span class="nc bnc" id="L301" title="All 2 branches missed.">        for (int i = 0; i &lt; appt.getRecurNumber()+1; i++) {</span>
+<span class="fc bfc" id="L301" title="All 2 branches covered.">        for (int i = 0; i &lt; appt.getRecurNumber()+1; i++) {</span>
 
             //Add the day of occurrence to the list if it is after the first day
-<span class="nc bnc" id="L304" title="All 2 branches missed.">            if (!occurrenceDay.before(firstDay)) {</span>
-<span class="nc" id="L305">                result.add(occurrenceDay);</span>
+<span class="pc bpc" id="L304" title="1 of 2 branches missed.">            if (!occurrenceDay.before(firstDay)) {</span>
+<span class="fc" id="L305">                result.add(occurrenceDay);</span>
             }
 
             //Calculate the next recurrence day
-<span class="nc" id="L309">            occurrenceDay = getNextApptOccurrence(appt, occurrenceDay);</span>
-<span class="nc bnc" id="L310" title="All 2 branches missed.">            if (occurrenceDay == null) {</span>
-                // break;
+<span class="fc" id="L309">            occurrenceDay = getNextApptOccurrence(appt, occurrenceDay);</span>
+<span class="fc bfc" id="L310" title="All 2 branches covered.">            if (occurrenceDay == null) {</span>
+<span class="fc" id="L311">                break;</span>
             }
 
             //Keep cycling while the occurence day is in range
-<span class="nc bnc" id="L315" title="All 2 branches missed.">            if (!occurrenceDay.before(lastDay)) {</span>
-<span class="nc" id="L316">                break;</span>
+<span class="fc bfc" id="L315" title="All 2 branches covered.">            if (!occurrenceDay.before(lastDay)) {</span>
+<span class="fc" id="L316">                break;</span>
             }
         }
 
-<span class="nc" id="L320">        return result;</span>
+<span class="fc" id="L320">        return result;</span>
     }
 
     /**
@@ -328,22 +328,22 @@ public class DataHandler {
     private static GregorianCalendar getNextApptOccurrence(Appt appt,
             GregorianCalendar day) {
         //If the appointment does not recur then return null
-<span class="nc bnc" id="L331" title="All 2 branches missed.">        if (!appt.isRecurring()) {</span>
-<span class="nc" id="L332">            return null;</span>
+<span class="fc bfc" id="L331" title="All 2 branches covered.">        if (!appt.isRecurring()) {</span>
+<span class="fc" id="L332">            return null;</span>
         }
 
         //Leave the original day untouched.
-<span class="nc" id="L336">        GregorianCalendar nextDay = (GregorianCalendar)day.clone();</span>
+<span class="fc" id="L336">        GregorianCalendar nextDay = (GregorianCalendar)day.clone();</span>
 
         //This depends on the recurrence settings
-<span class="nc bnc" id="L339" title="All 4 branches missed.">        switch (appt.getRecurBy()) {</span>
+<span class="fc bfc" id="L339" title="All 4 branches covered.">        switch (appt.getRecurBy()) {</span>
             case Appt.RECUR_BY_WEEKLY:
-<span class="nc" id="L341">                int[] recurDays = appt.getRecurDays();</span>
+<span class="fc" id="L341">                int[] recurDays = appt.getRecurDays();</span>
 
                 //If the user specified weekly recurrence and didn't specify
                 //which week days, then assume it is the same week day of the
                 //first occurrence
-<span class="nc bnc" id="L346" title="All 2 branches missed.">                if (recurDays.length == 0) {</span>
+<span class="pc bpc" id="L346" title="1 of 2 branches missed.">                if (recurDays.length == 0) {</span>
                     //Add 7 days and return that by default
 <span class="nc" id="L348">                    nextDay.add(nextDay.DAY_OF_MONTH, 7);</span>
 <span class="nc" id="L349">                    return nextDay;</span>
@@ -351,15 +351,15 @@ public class DataHandler {
 
                 //The user did specify weekly recurrence, so increment the
                 //day until it falls on a weekday the user specified
-<span class="nc bnc" id="L354" title="All 2 branches missed.">                for (int k = 0; k &lt; 7; k++) {</span>
-<span class="nc" id="L355">                    nextDay.add(nextDay.DAY_OF_MONTH, 1);</span>
-<span class="nc" id="L356">                    int newDayOfWeek = nextDay.get(nextDay.DAY_OF_WEEK);</span>
+<span class="pc bpc" id="L354" title="1 of 2 branches missed.">                for (int k = 0; k &lt; 7; k++) {</span>
+<span class="fc" id="L355">                    nextDay.add(nextDay.DAY_OF_MONTH, 1);</span>
+<span class="fc" id="L356">                    int newDayOfWeek = nextDay.get(nextDay.DAY_OF_WEEK);</span>
 
-<span class="nc bnc" id="L358" title="All 2 branches missed.">                    for (int i = 0; i &lt; recurDays.length; i++) {</span>
+<span class="fc bfc" id="L358" title="All 2 branches covered.">                    for (int i = 0; i &lt; recurDays.length; i++) {</span>
                         //If the calendar is set to a day of the week that the
                         //appt recurs on then return that day.
-<span class="nc bnc" id="L361" title="All 2 branches missed.">                        if (recurDays[i] == newDayOfWeek) {</span>
-<span class="nc" id="L362">                            return nextDay;</span>
+<span class="fc bfc" id="L361" title="All 2 branches covered.">                        if (recurDays[i] == newDayOfWeek) {</span>
+<span class="fc" id="L362">                            return nextDay;</span>
                         }
                     }
                 }
@@ -371,15 +371,15 @@ public class DataHandler {
             case Appt.RECUR_BY_MONTHLY:
                 //Just increment the month and return the day. Not sure what
                 //happens when the day is 31 and the next month has 30 days...
-<span class="nc" id="L374">                nextDay.add(nextDay.MONTH, 1);</span>
-<span class="nc" id="L375">                return nextDay;</span>
+<span class="fc" id="L374">                nextDay.add(nextDay.MONTH, 1);</span>
+<span class="fc" id="L375">                return nextDay;</span>
             case Appt.RECUR_BY_YEARLY:
                 //Just increment the year. The only possible problem is an
                 //appointment that recurs on February 29.
-<span class="nc" id="L379">                nextDay.add(nextDay.YEAR, 1);</span>
-<span class="nc" id="L380">                return nextDay;</span>
+<span class="fc" id="L379">                nextDay.add(nextDay.YEAR, 1);</span>
+<span class="fc" id="L380">                return nextDay;</span>
         }
-<span class="nc" id="L382">        return null;</span>
+<span class="fc" id="L382">        return null;</span>
     }
 
     /**
@@ -506,21 +506,21 @@ public class DataHandler {
      **/
     public boolean deleteAppt(Appt appt) {
         //Do not do anything to invalid appointments
-<span class="nc bnc" id="L509" title="All 2 branches missed.">        if (!appt.getValid()) {</span>
+<span class="pc bpc" id="L509" title="1 of 2 branches missed.">        if (!appt.getValid()) {</span>
 <span class="nc" id="L510">            return false;</span>
         }
 
         //Remove the appointment from the XML tree if applicable
-<span class="nc" id="L514">        Element apptElement = appt.getXmlElement();</span>
-<span class="nc bnc" id="L515" title="All 2 branches missed.">        if (apptElement == null) {</span>
-<span class="nc" id="L516">            return false;</span>
+<span class="fc" id="L514">        Element apptElement = appt.getXmlElement();</span>
+<span class="fc bfc" id="L515" title="All 2 branches covered.">        if (apptElement == null) {</span>
+<span class="fc" id="L516">            return false;</span>
         }
-<span class="nc" id="L518">        Node parentNode = apptElement.getParentNode();</span>
-<span class="nc" id="L519">        parentNode.removeChild(apptElement);</span>
-<span class="nc" id="L520">        appt.setXmlElement(null);</span>
+<span class="fc" id="L518">        Node parentNode = apptElement.getParentNode();</span>
+<span class="fc" id="L519">        parentNode.removeChild(apptElement);</span>
+<span class="fc" id="L520">        appt.setXmlElement(null);</span>
 
-<span class="nc bnc" id="L522" title="All 2 branches missed.">        if (isAutoSave()) {</span>
-<span class="nc" id="L523">            return save();</span>
+<span class="pc bpc" id="L522" title="1 of 2 branches missed.">        if (isAutoSave()) {</span>
+<span class="fc" id="L523">            return save();</span>
         }
         else {
 <span class="nc" id="L526">            return true;</span>
