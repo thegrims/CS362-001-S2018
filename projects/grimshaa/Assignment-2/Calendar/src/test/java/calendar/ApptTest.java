@@ -20,7 +20,7 @@ public class ApptTest {
 			assertEquals(test.getDescription(),"testDescription");
 			assertEquals(test.getEmailAddress(),"test@gmail.com");
 			// test.setValid();
-			// 
+			//
 			// assertEquals(test.getValid(),true);
 	 }
 
@@ -52,8 +52,51 @@ public class ApptTest {
 			assertEquals(test.getTitle(),"");
 			assertEquals(test.getDescription(),"");
 			assertEquals(test.getEmailAddress(),"");
+
 			test.setValid();
-			assertEquals(test.getValid(),true);
+			assertTrue(test.getValid());
+
+			//------------------------------------
+			test.setStartMonth(0);
+			test.setValid();
+			assertEquals(test.getValid(),false);
+
+			test.setStartMonth(12);
+			test.setValid();
+			assertEquals(test.getValid(),false);
+
+			test.setStartMonth(2);
+			//------------------------------------
+			test.setStartHour(-1);
+			test.setValid();
+			test.getValid();
+
+			test.setStartHour(800);
+			test.setValid();
+			test.getValid();
+			//------------------------------------
+			test.setStartYear(-1);
+			test.setValid();
+			assertEquals(test.getValid(),false);
+
+			test.setStartYear(2010);
+			//------------------------------------
+			test.setStartMinute(-1);
+			test.setValid();
+			assertEquals(test.getValid(),false);
+
+			test.setStartMinute(800);
+			test.setValid();
+			assertEquals(test.getValid(),false);
+
+			test.setStartMinute(2);
+			//------------------------------------
+			// test.setValid();
+			// assertTrue(test.getValid());
+
+
+
+			// assertEquals(test.getValid(),true);
 			assertEquals(test.isOn(2,2,2010),true);
 			assertEquals(test.isOn(2,2,2009),false);
 			test.toString();

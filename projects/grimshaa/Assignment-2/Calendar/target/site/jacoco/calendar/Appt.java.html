@@ -167,14 +167,14 @@ public class Appt{
      */
 	public void setValid() {
 
-<span class="pc bpc" id="L170" title="2 of 4 branches missed.">		if (startMonth &lt; 1 || startMonth == 12)</span>
-<span class="nc" id="L171">			this.valid = false;</span>
+<span class="fc bfc" id="L170" title="All 4 branches covered.">		if (startMonth &lt; 1 || startMonth == 12)</span>
+<span class="fc" id="L171">			this.valid = false;</span>
 <span class="pc bpc" id="L172" title="2 of 4 branches missed.">		else if (startHour &lt; 0 || startHour &gt; 23)</span>
 <span class="nc" id="L173">			this.valid = false;</span>
-<span class="pc bpc" id="L174" title="2 of 4 branches missed.">		else if (startMinute &lt; 0 || startMinute &gt; 59)</span>
-<span class="nc" id="L175">			this.valid = false;</span>
-<span class="pc bpc" id="L176" title="1 of 2 branches missed.">		else if (startYear &lt;= 0)</span>
-<span class="nc" id="L177">			this.valid = false;</span>
+<span class="fc bfc" id="L174" title="All 4 branches covered.">		else if (startMinute &lt; 0 || startMinute &gt; 59)</span>
+<span class="fc" id="L175">			this.valid = false;</span>
+<span class="fc bfc" id="L176" title="All 2 branches covered.">		else if (startYear &lt;= 0)</span>
+<span class="fc" id="L177">			this.valid = false;</span>
 		else {
 <span class="fc" id="L179">			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);</span>
 <span class="pc bpc" id="L180" title="2 of 4 branches missed.">			if (startDay &lt; 1 || startDay &gt; NumDaysInMonth)</span>
@@ -282,7 +282,7 @@ public class Appt{
      * @return True if the appointment occurs on a certain day/month/year
      */
     public boolean isOn(int day, int month, int year) {
-<span class="pc bpc" id="L285" title="2 of 4 branches missed.">        return (day == getStartDay() &amp;&amp; month == getStartMonth()</span>
+<span class="pc bpc" id="L285" title="1 of 4 branches missed.">        return (day == getStartDay() &amp;&amp; month == getStartMonth()</span>
 <span class="fc bfc" id="L286" title="All 2 branches covered.">                &amp;&amp; year == getStartYear());</span>
     }
 
@@ -374,8 +374,8 @@ public class Appt{
     public String toString()
     {
 
-<span class="pc bpc" id="L377" title="1 of 2 branches missed.">		if (!getValid()) {</span>
-<span class="nc" id="L378">		    System.err.println(&quot;\tThis appointment is not valid&quot;);</span>
+<span class="fc bfc" id="L377" title="All 2 branches covered.">		if (!getValid()) {</span>
+<span class="fc" id="L378">		    System.err.println(&quot;\tThis appointment is not valid&quot;);</span>
 		}
 <span class="fc" id="L380">         String day= this.getStartMonth()+&quot;/&quot;+this.getStartDay()+&quot;/&quot;+this.getStartYear() + &quot; at &quot;;</span>
 <span class="fc" id="L381">        return &quot;\t&quot;+ day +  this.represntationApp()  + &quot; ,&quot; +  getTitle()+ &quot;, &quot;+  getDescription()+&quot;\n&quot;;</span>
