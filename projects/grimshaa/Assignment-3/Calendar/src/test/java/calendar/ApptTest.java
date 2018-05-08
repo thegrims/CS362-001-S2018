@@ -19,6 +19,7 @@ public class ApptTest {
 			assertEquals(test.getTitle(),"test");
 			assertEquals(test.getDescription(),"testDescription");
 			assertEquals(test.getEmailAddress(),"test@gmail.com");
+
 			// test.setValid();
 			//
 			// assertEquals(test.getValid(),true);
@@ -79,6 +80,10 @@ public class ApptTest {
 			test.setValid();
 			assertEquals(test.getValid(),false);
 
+			test.setStartYear(0);
+			test.setValid();
+			assertEquals(test.getValid(),false);
+
 			test.setStartYear(2010);
 			//------------------------------------
 			test.setStartMinute(-1);
@@ -89,16 +94,28 @@ public class ApptTest {
 			test.setValid();
 			assertEquals(test.getValid(),false);
 
-			test.setStartMinute(2);
+			test.setStartMinute(59);
+			test.setValid();
+			assertEquals(test.getValid(),true);
+
+			test.setStartMinute(0);
+			test.setValid();
+			assertEquals(test.getValid(),true);
+
 			//------------------------------------
-			// test.setValid();
-			// assertTrue(test.getValid());
 
+			test.setStartDay(1);
+			test.setValid();
+			assertEquals(test.getValid(),true);
 
+			test.setStartDay(2);
 
 			// assertEquals(test.getValid(),true);
 			assertEquals(test.isOn(2,2,2010),true);
 			assertEquals(test.isOn(2,2,2009),false);
-			test.toString();
+			assertEquals(test.hasTimeSet(),true);
+			System.out.println(test.toString());
+			assertEquals(test.toString().contains("am"),true);
+			assertEquals(test.toString().contains("1:"),true);
 	 }
 }
