@@ -52,9 +52,11 @@ public class DataHandlerTest {
       int[] recurDaysArr4={2,3,4};
       myAppt.setRecurrence( recurDaysArr4, Appt.RECUR_BY_WEEKLY, 3, Appt.RECUR_NUMBER_FOREVER);
       System.out.println(myAppt.getRecurBy());
+			test.getApptRange(time1,time2);
 
       myAppt.setRecurrence( recurDaysArr4, Appt.RECUR_BY_MONTHLY, 3, Appt.RECUR_NUMBER_FOREVER);
       System.out.println(myAppt.getRecurBy());
+			test.getApptRange(time1,time2);
 
       myAppt.setRecurrence( recurDaysArr4, Appt.RECUR_BY_YEARLY, 3, Appt.RECUR_NUMBER_FOREVER);
       System.out.println(myAppt.getRecurBy());

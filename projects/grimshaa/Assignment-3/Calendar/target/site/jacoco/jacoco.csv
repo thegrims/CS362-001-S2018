@@ -2,7 +2,7 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 Calendar,calendar,DateOutOfRangeException,7,0,0,0,4,0,2,0,2,0
 Calendar,calendar,CalendarMain,357,0,4,0,76,0,4,0,2,0
 Calendar,calendar,XmlParserErrorHandler,34,45,1,1,5,9,3,3,2,3
-Calendar,calendar,Appt,20,349,12,32,5,94,12,46,0,36
+Calendar,calendar,Appt,20,349,11,33,5,94,11,47,0,36
 Calendar,calendar,CalDay,14,342,9,19,5,71,9,21,0,16
 Calendar,calendar,DataHandler,177,808,33,47,44,216,29,28,0,16
 Calendar,calendar,CalendarUtil,20,71,7,3,6,7,6,3,1,3
