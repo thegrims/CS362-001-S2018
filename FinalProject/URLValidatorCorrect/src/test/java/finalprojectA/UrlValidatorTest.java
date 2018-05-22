@@ -45,7 +45,7 @@ protected void setUp() {
 //            UrlValidator.ALLOW_2_SLASHES
 //                + UrlValidator.ALLOW_ALL_SCHEMES
 //                + UrlValidator.NO_FRAGMENTS;
-//    
+//
 //        testIsValid(testUrlPartsOptions, options);
    }
 
@@ -81,7 +81,8 @@ protected void setUp() {
     * @param testObjects Used to create a url.
     */
    public void testIsValid(Object[] testObjects, long allowAllSchemes) {
-	      UrlValidator urlVal = new UrlValidator(null, null, allowAllSchemes);
+     int test =0;
+        UrlValidator urlVal = new UrlValidator(null, null, allowAllSchemes);
 	      //UrlValidator urlVal = new UrlValidator(null, allowAllSchemes);
       assertTrue(urlVal.isValid("http://www.google.com"));
       assertTrue(urlVal.isValid("http://www.google.com/"));
@@ -101,8 +102,11 @@ protected void setUp() {
          }
          String url = testBuffer.toString();
          boolean result = urlVal.isValid(url);
-         if(result == true)
-        	 System.out.println(url);
+         if(result == true){
+           System.out.println(url);
+           test++;
+           System.out.println(test);
+         }
          assertEquals(url, expected, result);
          if (printStatus) {
             if (printIndex) {
