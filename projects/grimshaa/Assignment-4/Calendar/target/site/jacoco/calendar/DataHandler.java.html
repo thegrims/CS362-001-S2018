@@ -23,10 +23,10 @@ import org.w3c.dom.*;
 public class DataHandler {
     
     /** Default file name **/
-<span class="nc" id="L26">    private static String DEFAULT_FILE_NAME = &quot;calendar.xml&quot;;</span>
+<span class="fc" id="L26">    private static String DEFAULT_FILE_NAME = &quot;calendar.xml&quot;;</span>
     
     /** Default auto-save setting after each change to an appointment **/
-<span class="nc" id="L29">    private static boolean DEFAULT_AUTO_SAVE = true;</span>
+<span class="fc" id="L29">    private static boolean DEFAULT_AUTO_SAVE = true;</span>
     
     /** Very top of the XML document **/
     private Document document;
@@ -56,66 +56,66 @@ public class DataHandler {
      * Uses the default auto-save setting.
      **/
     public DataHandler(String fileName) throws IOException {
-<span class="nc" id="L59">        this(fileName, DEFAULT_AUTO_SAVE);</span>
-<span class="nc" id="L60">    }</span>
+<span class="fc" id="L59">        this(fileName, DEFAULT_AUTO_SAVE);</span>
+<span class="fc" id="L60">    }</span>
     
     /**
      * Creates a new data handler with the specified filename and auto-save
      * setting
      **/
-<span class="nc" id="L66">    public DataHandler(String fileName, boolean autoSave) throws IOException {</span>
+<span class="fc" id="L66">    public DataHandler(String fileName, boolean autoSave) throws IOException {</span>
         //Record the line separator for later use
-<span class="nc" id="L68">        String separator = System.getProperty(&quot;line.separator&quot;);</span>
+<span class="fc" id="L68">        String separator = System.getProperty(&quot;line.separator&quot;);</span>
         
         //The data handler isn't valid unless everything is set up correctly
-<span class="nc" id="L71">        valid = false;</span>
+<span class="fc" id="L71">        valid = false;</span>
         
         //Record the auto-save setting and file name
-<span class="nc" id="L74">        this.autoSave = autoSave;</span>
-<span class="nc" id="L75">        setFileName(fileName);</span>
+<span class="fc" id="L74">        this.autoSave = autoSave;</span>
+<span class="fc" id="L75">        setFileName(fileName);</span>
         
         //Read the XML file...
         //Step 1. Set up document builder factory and its settings
-<span class="nc" id="L79">        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</span>
-<span class="nc" id="L80">        dbf.setValidating(false);</span>
-<span class="nc" id="L81">        dbf.setIgnoringComments(false);</span>
-<span class="nc" id="L82">        dbf.setIgnoringElementContentWhitespace(false);</span>
-<span class="nc" id="L83">        dbf.setCoalescing(false);</span>
-<span class="nc" id="L84">        dbf.setExpandEntityReferences(true);</span>
+<span class="fc" id="L79">        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</span>
+<span class="fc" id="L80">        dbf.setValidating(false);</span>
+<span class="fc" id="L81">        dbf.setIgnoringComments(false);</span>
+<span class="fc" id="L82">        dbf.setIgnoringElementContentWhitespace(false);</span>
+<span class="fc" id="L83">        dbf.setCoalescing(false);</span>
+<span class="fc" id="L84">        dbf.setExpandEntityReferences(true);</span>
         
         //Step 2. Create a document builder from the factory
-<span class="nc" id="L87">        DocumentBuilder db = null;</span>
+<span class="fc" id="L87">        DocumentBuilder db = null;</span>
         try {
-<span class="nc" id="L89">            db = dbf.newDocumentBuilder();</span>
+<span class="fc" id="L89">            db = dbf.newDocumentBuilder();</span>
         }
 <span class="nc" id="L91">        catch (ParserConfigurationException pce) {</span>
 <span class="nc" id="L92">            throw new IOException(&quot;Invalid parser configuration.&quot; + separator +</span>
 <span class="nc" id="L93">            pce.getMessage());</span>
-<span class="nc" id="L94">        }</span>
-<span class="nc" id="L95">        db.setErrorHandler(new XmlParserErrorHandler());</span>
+<span class="fc" id="L94">        }</span>
+<span class="fc" id="L95">        db.setErrorHandler(new XmlParserErrorHandler());</span>
         
         //Step 3. Parse the file now (or a default string if it doesn't exist)
-<span class="nc" id="L98">        Document doc = null;</span>
+<span class="fc" id="L98">        Document doc = null;</span>
         try {
-<span class="nc" id="L100">            File file = new File(fileName);</span>
-<span class="nc bnc" id="L101" title="All 2 branches missed.">            if (file.isFile()) {</span>
+<span class="fc" id="L100">            File file = new File(fileName);</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">            if (file.isFile()) {</span>
 <span class="nc" id="L102">                doc = db.parse(file);</span>
             }
             else {
-<span class="nc" id="L105">                String newFile = &quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;&lt;calendar/&gt;&quot;;</span>
-<span class="nc" id="L106">                InputSource is = new InputSource(new StringReader(newFile));</span>
-<span class="nc" id="L107">                doc = db.parse(is);</span>
+<span class="fc" id="L105">                String newFile = &quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;&lt;calendar/&gt;&quot;;</span>
+<span class="fc" id="L106">                InputSource is = new InputSource(new StringReader(newFile));</span>
+<span class="fc" id="L107">                doc = db.parse(is);</span>
             }
         }
 <span class="nc" id="L110">        catch (SAXException se) {</span>
 <span class="nc" id="L111">            throw new IOException(&quot;Unable to read document.&quot; + separator +</span>
 <span class="nc" id="L112">            se.getMessage());</span>
-<span class="nc" id="L113">        }</span>
+<span class="fc" id="L113">        }</span>
         
         //Set the document node now
-<span class="nc" id="L116">        setDocument(doc);</span>
-<span class="nc" id="L117">        valid = true;</span>
-<span class="nc" id="L118">    }</span>
+<span class="fc" id="L116">        setDocument(doc);</span>
+<span class="fc" id="L117">        valid = true;</span>
+<span class="fc" id="L118">    }</span>
     
     /**
      * Retrieves a range of appointments between two dates.
@@ -572,13 +572,13 @@ public class DataHandler {
     
     /** Sets parent **/
     private void setDocument(Document document) {
-<span class="nc" id="L575">        this.document = document;</span>
-<span class="nc" id="L576">    }</span>
+<span class="fc" id="L575">        this.document = document;</span>
+<span class="fc" id="L576">    }</span>
     
     /** Sets fileName **/
     private void setFileName(String fileName) {
-<span class="nc" id="L580">        this.fileName = fileName;</span>
-<span class="nc" id="L581">    }</span>
+<span class="fc" id="L580">        this.fileName = fileName;</span>
+<span class="fc" id="L581">    }</span>
     
     /** Gets parent **/
     private Document getDocument() {

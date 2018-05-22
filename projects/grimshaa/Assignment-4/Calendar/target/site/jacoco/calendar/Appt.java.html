@@ -139,10 +139,10 @@ public class Appt{
                 String emailAddress) {
                     
          //Just call the other constructor
-<span class="nc" id="L142">         this(NO_TIME, NO_TIME, startDay, startMonth, startYear, title, </span>
+<span class="fc" id="L142">         this(NO_TIME, NO_TIME, startDay, startMonth, startYear, title, </span>
             description, emailAddress);
-<span class="nc" id="L144">         this.valid=true;</span>
-<span class="nc" id="L145">    }</span>
+<span class="fc" id="L144">         this.valid=true;</span>
+<span class="fc" id="L145">    }</span>
 
 	/**
      * Sets the XML Element for this appointment
@@ -161,22 +161,22 @@ public class Appt{
      */
 	public void setValid() {
 
-<span class="nc bnc" id="L164" title="All 4 branches missed.">		if (startMonth &lt; 1 || startMonth &gt; 12)</span>
-<span class="nc" id="L165">			this.valid = false;</span>
-<span class="nc bnc" id="L166" title="All 4 branches missed.">		else if (startHour &lt; 0 || startHour &gt; 23)</span>
-<span class="nc" id="L167">			this.valid = false;</span>
-<span class="nc bnc" id="L168" title="All 4 branches missed.">		else if (startMinute &lt; 0 || startMinute &gt; 59)</span>
-<span class="nc" id="L169">			this.valid = false;</span>
-<span class="nc bnc" id="L170" title="All 2 branches missed.">		else if (startYear &lt;= 0)</span>
-<span class="nc" id="L171">			this.valid = false;</span>
+<span class="fc bfc" id="L164" title="All 4 branches covered.">		if (startMonth &lt; 1 || startMonth &gt; 12)</span>
+<span class="fc" id="L165">			this.valid = false;</span>
+<span class="fc bfc" id="L166" title="All 4 branches covered.">		else if (startHour &lt; 0 || startHour &gt; 23)</span>
+<span class="fc" id="L167">			this.valid = false;</span>
+<span class="fc bfc" id="L168" title="All 4 branches covered.">		else if (startMinute &lt; 0 || startMinute &gt; 59)</span>
+<span class="fc" id="L169">			this.valid = false;</span>
+<span class="fc bfc" id="L170" title="All 2 branches covered.">		else if (startYear &lt;= 0)</span>
+<span class="fc" id="L171">			this.valid = false;</span>
 		else {
-<span class="nc" id="L173">			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);</span>
-<span class="nc bnc" id="L174" title="All 4 branches missed.">			if (startDay &lt; 1 || startDay &gt; NumDaysInMonth)</span>
-<span class="nc" id="L175">				this.valid = false;</span>
+<span class="fc" id="L173">			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);</span>
+<span class="fc bfc" id="L174" title="All 4 branches covered.">			if (startDay &lt; 1 || startDay &gt; NumDaysInMonth)</span>
+<span class="fc" id="L175">				this.valid = false;</span>
 			else
-<span class="nc" id="L177">				this.valid = true;</span>
+<span class="fc" id="L177">				this.valid = true;</span>
 		}
-<span class="nc" id="L179">	}</span>
+<span class="fc" id="L179">	}</span>
     
 
 
@@ -229,42 +229,42 @@ public class Appt{
 <span class="fc" id="L229">    }   </span>
     /** Gets startHour */
     public int getStartHour() {
-<span class="nc" id="L232">        return startHour;</span>
+<span class="fc" id="L232">        return startHour;</span>
     }
     
     /** Gets startHour */
     public int getStartMinute() {
-<span class="nc" id="L237">        return startMinute;</span>
+<span class="fc" id="L237">        return startMinute;</span>
     }
     
     /** Gets startDay */
     public int getStartDay() {
-<span class="nc" id="L242">        return startDay;</span>
+<span class="fc" id="L242">        return startDay;</span>
     }
     
     /** Gets startMonth */
     public int getStartMonth() {
-<span class="nc" id="L247">        return startMonth;</span>
+<span class="fc" id="L247">        return startMonth;</span>
     }
     
     /** Gets startYear */
     public int getStartYear() {
-<span class="nc" id="L252">        return startYear;</span>
+<span class="fc" id="L252">        return startYear;</span>
     }
  
     /** Gets title */
     public String getTitle() {
-<span class="nc" id="L257">        return title;</span>
+<span class="fc" id="L257">        return title;</span>
     }
     
     /** Gets description */
     public String getDescription() {
-<span class="nc" id="L262">        return description;</span>
+<span class="fc" id="L262">        return description;</span>
     }
     
     /** Gets emailAddress */
     public String getEmailAddress() {
-<span class="nc" id="L267">        return emailAddress;</span>
+<span class="fc" id="L267">        return emailAddress;</span>
     }
     /** Gets description */
     public boolean getValid() {
@@ -276,8 +276,8 @@ public class Appt{
      * @return True if the appointment occurs on a certain day/month/year
      */
     public boolean isOn(int day, int month, int year) {
-<span class="nc bnc" id="L279" title="All 4 branches missed.">        return (day == getStartDay() &amp;&amp; month == getStartMonth() </span>
-<span class="nc bnc" id="L280" title="All 2 branches missed.">                &amp;&amp; year == getStartYear());</span>
+<span class="fc bfc" id="L279" title="All 4 branches covered.">        return (day == getStartDay() &amp;&amp; month == getStartMonth() </span>
+<span class="pc bpc" id="L280" title="1 of 2 branches missed.">                &amp;&amp; year == getStartYear());</span>
     }
     
     /**
@@ -285,7 +285,7 @@ public class Appt{
      * @return True if this appointment has a time set. Otherwise false.
      */
     public boolean hasTimeSet() {
-<span class="nc bnc" id="L288" title="All 2 branches missed.">        return (getStartHour() != NO_TIME);</span>
+<span class="fc bfc" id="L288" title="All 2 branches covered.">        return (getStartHour() != NO_TIME);</span>
     } 
     /**
      * Sets the recurring information with the correct information
@@ -297,8 +297,8 @@ public class Appt{
 <span class="fc" id="L297">        setRecurNumber(recurNumber);</span>
 <span class="fc" id="L298">    }</span>
     private void setRecurDays(int[] recurDays) {
-<span class="pc bpc" id="L300" title="1 of 2 branches missed.">        if (recurDays == null) {</span>
-<span class="nc" id="L301">            this.recurDays = new int[0];</span>
+<span class="fc bfc" id="L300" title="All 2 branches covered.">        if (recurDays == null) {</span>
+<span class="fc" id="L301">            this.recurDays = new int[0];</span>
         }
         else {
 <span class="fc" id="L304">            this.recurDays = recurDays;</span>
