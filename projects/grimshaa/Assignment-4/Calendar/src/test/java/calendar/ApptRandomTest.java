@@ -132,6 +132,10 @@ public class ApptRandomTest {
 								ValuesGenerator.getRandomIntBetween(random, 1, 11),
 								ValuesGenerator.getRandomIntBetween(random, 2018, 2018));
 
+			appt.isOn(ValuesGenerator.getRandomIntBetween(random, -5, 35),
+								ValuesGenerator.getRandomIntBetween(random, -5, 15),
+								ValuesGenerator.getRandomIntBetween(random, -5, 15));
+
 			// Test getters
 			assertEquals(appt.getStartHour(),startHour);
 			assertEquals(appt.getStartMinute(),startMinute);

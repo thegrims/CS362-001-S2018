@@ -45,6 +45,7 @@ public class CalDayRandomTest {
 			GregorianCalendar time1 = new GregorianCalendar(pdt);
 			CalDay test = new CalDay(time1);
 
+			CalDay test2 = new CalDay(time1);
 			try{
 				for (int iteration = 0; elapsed < TestTimeout; iteration++) {
 					long randomseed =System.currentTimeMillis(); //10
@@ -98,6 +99,7 @@ public class CalDayRandomTest {
 					appt.setValid();
 
 					test.addAppt(appt);
+					test2.addAppt(appt);
 
 					elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
  			        if((iteration%10000)==0 && iteration!=0 )

@@ -98,8 +98,8 @@ public class DataHandler {
 <span class="fc" id="L98">        Document doc = null;</span>
         try {
 <span class="fc" id="L100">            File file = new File(fileName);</span>
-<span class="pc bpc" id="L101" title="1 of 2 branches missed.">            if (file.isFile()) {</span>
-<span class="nc" id="L102">                doc = db.parse(file);</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            if (file.isFile()) {</span>
+<span class="fc" id="L102">                doc = db.parse(file);</span>
             }
             else {
 <span class="fc" id="L105">                String newFile = &quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;&lt;calendar/&gt;&quot;;</span>
