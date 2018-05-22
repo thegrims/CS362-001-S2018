@@ -1,4 +1,3 @@
-calendar/CalDayRandomTest.class
-calendar/DataHandlerRandomTest.class
 calendar/ApptRandomTest.class
+calendar/DataHandlerRandomTest.class
 calendar/ValuesGenerator.class

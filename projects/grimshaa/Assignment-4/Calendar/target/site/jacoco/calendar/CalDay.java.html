@@ -52,20 +52,20 @@ public class CalDay {
 	* added to it. Note that months are numbered 0 through 11. This does
 	* not check to see if a date is valid.
 	*/
-<span class="nc" id="L55">	public CalDay(GregorianCalendar cal) {</span>
+<span class="fc" id="L55">	public CalDay(GregorianCalendar cal) {</span>
 	
-<span class="nc" id="L57">		int day = cal.get(cal.DAY_OF_MONTH);</span>
-<span class="nc" id="L58">		int month = cal.get(cal.MONTH);</span>
-<span class="nc" id="L59">		int year = cal.get(cal.YEAR);</span>
+<span class="fc" id="L57">		int day = cal.get(cal.DAY_OF_MONTH);</span>
+<span class="fc" id="L58">		int month = cal.get(cal.MONTH);</span>
+<span class="fc" id="L59">		int year = cal.get(cal.YEAR);</span>
 	
-<span class="nc" id="L61">		setDay(day);</span>
-<span class="nc" id="L62">		setMonth(month+1);</span>
-<span class="nc" id="L63">		setYear(year);</span>
+<span class="fc" id="L61">		setDay(day);</span>
+<span class="fc" id="L62">		setMonth(month+1);</span>
+<span class="fc" id="L63">		setYear(year);</span>
 	
-<span class="nc" id="L65">		setAppts(new LinkedList&lt;Appt&gt;());</span>
+<span class="fc" id="L65">		setAppts(new LinkedList&lt;Appt&gt;());</span>
 	
-<span class="nc" id="L67">		valid = true;</span>
-<span class="nc" id="L68">	}</span>
+<span class="fc" id="L67">		valid = true;</span>
+<span class="fc" id="L68">	}</span>
 	
 	/**
 	 * Adds an appointment to the calendar day object. The appointments are
@@ -74,20 +74,20 @@ public class CalDay {
 	 * appointments can be added. The appointment can also be added twice.
 	 */
 	public void addAppt(Appt appt) {
-<span class="nc bnc" id="L77" title="All 2 branches missed.">		if (appt.getValid()) {</span>
-<span class="nc bnc" id="L78" title="All 2 branches missed.">			for (int i = 0; i &lt; getAppts().size(); i++) {</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">		if (appt.getValid()) {</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">			for (int i = 0; i &lt; getAppts().size(); i++) {</span>
 				//Put the appointment in the correct order - finish this
-<span class="nc" id="L80">				if (((Appt)getAppts().get(i)).getStartHour() &gt;</span>
-<span class="nc bnc" id="L81" title="All 2 branches missed.">										appt.getStartHour()) {</span>
+<span class="fc" id="L80">				if (((Appt)getAppts().get(i)).getStartHour() &gt;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">										appt.getStartHour()) {</span>
 					
-<span class="nc" id="L83">					getAppts().add(i, appt);</span>
-<span class="nc" id="L84">					return;</span>
+<span class="fc" id="L83">					getAppts().add(i, appt);</span>
+<span class="fc" id="L84">					return;</span>
 				}
 			}
 		    //The appointment hasn't been added yet, so add it
-<span class="nc" id="L88">		    getAppts().add(appt);</span>
+<span class="fc" id="L88">		    getAppts().add(appt);</span>
 		}
-<span class="nc" id="L90">	}</span>
+<span class="fc" id="L90">	}</span>
 
 	
 	/**
@@ -114,31 +114,31 @@ public class CalDay {
 	
 	/** Sets appts */
 	private void setAppts(LinkedList&lt;Appt&gt; appts) {
-<span class="nc bnc" id="L117" title="All 2 branches missed.">		if(appts!=null)</span>
-<span class="nc" id="L118">				this.appts = appts;</span>
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">		if(appts!=null)</span>
+<span class="fc" id="L118">				this.appts = appts;</span>
 		
-<span class="nc bnc" id="L120" title="All 4 branches missed.">		if(appts!=null&amp;&amp;appts.size()==0)</span>
-<span class="nc" id="L121">			this.appts = appts;</span>
-<span class="nc" id="L122">	}</span>
+<span class="pc bpc" id="L120" title="2 of 4 branches missed.">		if(appts!=null&amp;&amp;appts.size()==0)</span>
+<span class="fc" id="L121">			this.appts = appts;</span>
+<span class="fc" id="L122">	}</span>
 	
 	/** Sets day */
 	private void setDay(int day) {
-<span class="nc" id="L126">	    this.day = day;</span>
-<span class="nc" id="L127">	}</span>
+<span class="fc" id="L126">	    this.day = day;</span>
+<span class="fc" id="L127">	}</span>
 	
 	/** Sets month */
 	private void setMonth(int month) {
-<span class="nc" id="L131">	    this.month = month;</span>
-<span class="nc" id="L132">	}</span>
+<span class="fc" id="L131">	    this.month = month;</span>
+<span class="fc" id="L132">	}</span>
 	
 	/** Sets year */
 	private void setYear(int year) {
-<span class="nc" id="L136">	    this.year = year;</span>
-<span class="nc" id="L137">	}</span>
+<span class="fc" id="L136">	    this.year = year;</span>
+<span class="fc" id="L137">	}</span>
 	
 	/** Gets appts */
 	public LinkedList&lt;Appt&gt; getAppts() {
-<span class="nc" id="L141">	    return appts;</span>
+<span class="fc" id="L141">	    return appts;</span>
 	}
 	/** Gets size of the Appts */
 	public int getSizeAppts() {
