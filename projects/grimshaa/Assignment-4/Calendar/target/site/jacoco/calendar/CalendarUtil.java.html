@@ -13,7 +13,7 @@ package calendar;
 <span class="nc" id="L13">public class CalendarUtil {</span>
 	
 	/** integers specifying the number of days in each month **/
-<span class="fc" id="L16">	public static int DaysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};</span>
+<span class="nc" id="L16">	public static int DaysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};</span>
 	
 	/** static var used for February **/
 	public static final int FEBRUARY = 1;
@@ -27,13 +27,13 @@ package calendar;
 	**/
 	public static int NumDaysInMonth(int year, int month) {
 		
-<span class="fc" id="L30">		int baseDays = DaysInMonth[month];</span>
+<span class="nc" id="L30">		int baseDays = DaysInMonth[month];</span>
 	
-<span class="pc bpc" id="L32" title="3 of 4 branches missed.">		if(IsLeapYear(year) &amp;&amp; (month == FEBRUARY)) {</span>
+<span class="nc bnc" id="L32" title="All 4 branches missed.">		if(IsLeapYear(year) &amp;&amp; (month == FEBRUARY)) {</span>
 <span class="nc" id="L33">				baseDays = baseDays + 1;</span>
 		}
 	
-<span class="fc" id="L36">		return baseDays;</span>
+<span class="nc" id="L36">		return baseDays;</span>
 	}
 	/**
 	*	Determines if the specified year is a Leap Year
@@ -43,7 +43,7 @@ package calendar;
 	**/
 	public static boolean IsLeapYear(int year) {
 	//if the year is a multiple of 100, the year is a leap year if its also a multiple of 400
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">		if ((year % 100) == 0) {</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">		if ((year % 100) == 0) {</span>
 			
 <span class="nc bnc" id="L48" title="All 2 branches missed.">			if((year % 400) == 0) {</span>
 <span class="nc" id="L49">				return true;</span>
@@ -54,11 +54,11 @@ package calendar;
 		}
 	
 		//year is also leap year if multiple of 4
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">		if ((year % 4) == 0) {</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">		if ((year % 4) == 0) {</span>
 <span class="nc" id="L58">			return true;</span>
 		}
 		else{
-<span class="fc" id="L61">			return false;</span>
+<span class="nc" id="L61">			return false;</span>
 		}
 	}
 }
