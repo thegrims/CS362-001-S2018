@@ -29,23 +29,41 @@ public class UrlValidatorTest extends TestCase {
 
    public void testYourFirstPartition()
    {
-	 //You can use this function to implement your First Partition testing
-    String[] schemes = {"http","https"};
-    // UrlValidator urlValidator = new UrlValidator(null,null,UrlValidator.ALLOW_ALL_SCHEMES);
-    UrlValidator urlValidator = new UrlValidator(schemes);
+	    //You can use this function to implement your First Partition testing
+	    // This partition tests overloading the constructor with strings list
+      String[] schemes = {"http","https"};
 
-    assertEquals(urlValidator.isValidScheme("http"),true);
+      UrlValidator urlValidator = new UrlValidator(schemes);
 
-    // assertEquals(urlValidator.isValid("ftp://foo.bar.com/"),true);
-    assertEquals(urlValidator.isValid(null),false);
-    assertEquals(urlValidator.isValid(""),false);
-    // assertEquals(urlValidator.isValid("http://www.google.com/"),true);
+      assertEquals(urlValidator.isValidScheme("http"),true);
+      assertEquals(urlValidator.isValidScheme("https"),true);
+      assertEquals(urlValidator.isValid("ftp://foo.bar.com/"),false);
+      assertEquals(urlValidator.isValid(null),false);
+      assertEquals(urlValidator.isValid(""),false);
+      assertEquals(urlValidator.isValid("http://www.google.com/"),true);
 
    }
 
    public void testYourSecondPartition(){
 		 //You can use this function to implement your Second Partition testing
-
+		 // This partition tests overloading the constructor to allow all strings
+     UrlValidator urlValidator = new UrlValidator(null,null,UrlValidator.ALLOW_ALL_SCHEMES);
+     assertEquals(urlValidator.isValidScheme("http"),true);
+     assertEquals(urlValidator.isValidScheme("https"),true);
+     // assertEquals(urlValidator.isValid("ftp://foo.bar.com/"),true);
+     assertEquals(urlValidator.isValid(null),false);
+     assertEquals(urlValidator.isValid(""),false);
+     assertEquals(urlValidator.isValid("http://www.google.com/"),true);
+   }
+   public void testYourThirdPartition(){
+     // This partition tests using the default constructor
+     UrlValidator urlValidator = new UrlValidator();
+     assertEquals(urlValidator.isValidScheme("http"),true);
+     assertEquals(urlValidator.isValidScheme("https"),true);
+     assertEquals(urlValidator.isValid("ftp://foo.bar.com/"),true);
+     assertEquals(urlValidator.isValid(null),false);
+     assertEquals(urlValidator.isValid(""),false);
+     assertEquals(urlValidator.isValid("http://www.google.com/"),true);
    }
    //You need to create more test cases for your Partitions if you need to
 
