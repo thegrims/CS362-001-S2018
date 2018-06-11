@@ -31,9 +31,16 @@ public class UrlValidatorTest extends TestCase {
    {
 	 //You can use this function to implement your First Partition testing
     String[] schemes = {"http","https"};
-    UrlValidator urlValidator = new UrlValidator(null,null,UrlValidator.ALLOW_ALL_SCHEMES);
+    // UrlValidator urlValidator = new UrlValidator(null,null,UrlValidator.ALLOW_ALL_SCHEMES);
+    UrlValidator urlValidator = new UrlValidator(schemes);
+
+    assertEquals(urlValidator.isValidScheme("http"),true);
+
     // assertEquals(urlValidator.isValid("ftp://foo.bar.com/"),true);
-    assertEquals(urlValidator.isValid("http://www.google.com/"),true);
+    assertEquals(urlValidator.isValid(null),false);
+    assertEquals(urlValidator.isValid(""),false);
+    // assertEquals(urlValidator.isValid("http://www.google.com/"),true);
+
    }
 
    public void testYourSecondPartition(){

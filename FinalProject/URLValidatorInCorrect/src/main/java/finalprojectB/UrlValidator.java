@@ -25,6 +25,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import java.util.Arrays;
+import java.util.Iterator;
 /**
  * <p><b>URL Validation</b> routines.</p>
  * Behavior of validation is modified by passing in options:
@@ -134,7 +136,7 @@ public class UrlValidator implements Serializable {
     private static final Pattern SCHEME_PATTERN = Pattern.compile(SCHEME_REGEX);
 
     // Drop numeric, and  "+-." for now
-    // TODO does not allow for optional userinfo. 
+    // TODO does not allow for optional userinfo.
     // Validation of character set is done by isValidAuthority
     private static final String AUTHORITY_CHARS_REGEX = "\\p{Alnum}\\-\\."; // allows for IPV4 but not IPV6
     private static final String IPV6_REGEX = "[0-9a-fA-F:]+"; // do this as separate match because : could cause ambiguity with port prefix
@@ -211,6 +213,7 @@ public class UrlValidator implements Serializable {
      */
     public UrlValidator() {
         this(null);
+        System.out.println("Default Constructor");
     }
 
     /**
@@ -223,6 +226,13 @@ public class UrlValidator implements Serializable {
      */
     public UrlValidator(String[] schemes) {
         this(schemes, 0L);
+        System.out.println("Constructor 1");
+        // try{
+        //   System.out.println("Schemes: ",Arrays.toString(schemes));
+        // }
+        // catch(Exception e){
+        //
+        // }
     }
 
     /**
@@ -233,6 +243,7 @@ public class UrlValidator implements Serializable {
      */
     public UrlValidator(long options) {
         this(null, null, options);
+        System.out.println("Constructor 2");
     }
 
     /**
@@ -244,6 +255,7 @@ public class UrlValidator implements Serializable {
      */
     public UrlValidator(String[] schemes, long options) {
         this(schemes, null, options);
+        System.out.println("Constructor 3");
     }
 
     /**
@@ -257,6 +269,7 @@ public class UrlValidator implements Serializable {
      */
     public UrlValidator(RegexValidator authorityValidator, long options) {
         this(null, authorityValidator, options);
+        System.out.println("Constructor 4");
     }
 
     /**
@@ -269,6 +282,8 @@ public class UrlValidator implements Serializable {
      * enables both of those options.
      */
     public UrlValidator(String[] schemes, RegexValidator authorityValidator, long options) {
+        System.out.println("Constructor 5");
+
         this.options = options;
 
         if (isOn(ALLOW_ALL_SCHEMES)) {
@@ -279,7 +294,7 @@ public class UrlValidator implements Serializable {
             }
             allowedSchemes = new HashSet<String>(schemes.length);
             for(int i=0; i < schemes.length; i++) {
-                allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));
+                allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
 
             }
         }
@@ -354,6 +369,8 @@ public class UrlValidator implements Serializable {
      * @return true if valid.
      */
     protected boolean isValidScheme(String scheme) {
+        System.out.println(scheme);
+        for (String s : allowedSchemes) { System.out.println(s); }
         if (scheme == null) {
             return false;
         }
@@ -455,14 +472,14 @@ public class UrlValidator implements Serializable {
         try {
             URI uri = new URI(null,null,path,null);
             String norm = uri.normalize().getPath();
-            if (norm.startsWith("/../") // Trying to go via the parent dir 
+            if (norm.startsWith("/../") // Trying to go via the parent dir
              || norm.equals("/..")) {   // Trying to go to the parent dir
                 return false;
             }
         } catch (URISyntaxException e) {
             return false;
         }
-        
+
         int slash2Count = countToken("//", path);
         if (isOff(ALLOW_2_SLASHES) && (slash2Count > 0)) {
             return false;
